@@ -1,14 +1,30 @@
-"""
-
-"""
-
 import random
 from datetime import datetime
 
+
+def arvutame(sisend: list[int]) -> str:
+    """
+    Loen sisse listi ja võtab nendest välja summa, keskmise ja suurima arvu
+    
+    args:
+        sisend[list]: Täisarvuline list
+    
+    returns:
+        str: annab väärtused summa, keskmine, suurim.
+    """
+    # Kasutame sisse ehitatuid funktsioone sum, ja max ning keskmise arvutame.
+    summa = sum(sisend) 
+    keskmine = summa / len(sisend)
+    suurim = max(sisend)
+
+    # Väljastame kohe õigel kujul stringi mida väljastada
+
+    return f'Summa: {summa} \nKeskmine: {keskmine:.2f} \nSuurim arv: {suurim}' 
 time = datetime.now() # Kutsume välja 
 vormindatud =time.strftime('%d.%m.%Y %H:%M:%S') # Vormindmae aja ära, et oleks nagu vaja 
 filename = 'andmed.txt' # Genereeritava faili nimi
 arvud =[] # Tühi list kuhu hiljem korjame arvud.
+
 # Siit hakkab faili genereerimise ning kuupäeva ja juhuslike arvude salvestamise kood.
 
 with open(filename, 'w', encoding='utf-8') as f: # Avame faili kirjutamiseks
@@ -20,9 +36,7 @@ with open(filename, 'w', encoding='utf-8') as f: # Avame faili kirjutamiseks
         f.write(f' {nr}') # Kirjutame selle arvu faili
         count += 1 # Lisame +1 counterisse.
 
-# Siit alates loeme loodud failist arvud sisse, töötleb ja kuvab neid
-
-    # Loeme faili sisse ja puhastame välja ainult arvud listi
+# Loeme faili sisse ja puhastame välja ainult arvud listi
 
 with open(filename, 'r', encoding='utf-8' ) as f:
     contents = f.readlines()[1:] # Loeme faili sisu muutujasse, alates teisest reast
@@ -32,5 +46,8 @@ with open(filename, 'r', encoding='utf-8' ) as f:
             if part.isdigit(): # Kontrollime kas on tegu arvuga
                 arvud.append(int(part)) # Kui on arv lisame loodud tühja listi. 
 
-    #Võtame selle listi ja teem maagiat.
+#Võtame selle listi ja teem maagiat.
+
+print(f'Failist loetud arvud {arvud}')
+print(arvutame(arvud))
 
