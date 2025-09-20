@@ -2,7 +2,7 @@ import random
 from datetime import datetime
 
 
-def arvutame(sisend: list[int]) -> str:
+def arvutame(sisend:list[int]):
     """
     Loen sisse listi ja võtab nendest välja summa, keskmise ja suurima arvu
     
